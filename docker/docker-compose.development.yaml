@@ -1,0 +1,23 @@
+version: '3'
+services:
+  pgsql:
+    image: 'postgres:14.1-alpine'
+    container_name: 'pgsql'
+    env_file:
+      - ./psql.env
+    restart: unless-stopped
+    ports:
+      - "54320:5432"
+    volumes:
+      - ./var/psql/data:/var/lib/postgresql/data
+  mongodb:
+    # image: mongodb/mongodb-community-server:6.0-ubi8
+    image: mongo:latest
+    restart: unless-stopped
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=nboard
+      - MONGO_INITDB_ROOT_PASSWORD=f50649439eb0d82310323bd076
+    ports: 
+      - "27017:27017"
+    volumes:
+      - ./var/mongodb/data:/data/db

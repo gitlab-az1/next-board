@@ -1,0 +1,23 @@
+@mixin flex($justifyContent: center, $alignItems: center) {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: $justifyContent;
+  align-items: $alignItems;
+}
+
+@mixin flexbase() {
+  display: flex;
+  display: -webkit-flex;
+}
+
+@mixin tablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 600px) {
+    @content;
+  }
+}
